@@ -1,0 +1,243 @@
+{
+    "店铺安全检查": {
+        "uuid": "c775124b-8aba-489d-9da4-116cad0a25c1",
+        "dept": "运营部",
+        "aliases": [
+            "安全检查",
+            "检查店铺安全"
+        ],
+        "desc": "完成对店铺的账户状况、绩效通知、反馈管理器、管理支持问题的检查,并将检查的结果发至对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "params": [],
+        "direct": true
+    },
+    "店铺提现": {
+        "uuid": "ca8f2408-b02d-4ad2-a3c7-f5755e216770",
+        "dept": "财务部",
+        "aliases": [
+            "提现"
+        ],
+        "desc": "将表格中的店铺依次打开，进行提现，并记录提现的数据,并将提现的结果发至对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "params": [],
+        "direct": true
+    },
+    "测试专用": {
+        "uuid": "5ff5e279-0c43-4d11-96c3-9c849e11116f",
+        "dept": "智能开发部",
+        "aliases": [
+            "测试"
+        ],
+        "desc": "流程有一个入参，一个出参，可测试参数传递状态，内部无实际流程",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic","BotB@linenchic","BotC@linenchic","BotD@linenchic"
+            ]
+        },
+        "params": [
+            {
+                "name": "入参",
+                "label": "向流程中添加的参数",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "direct": true
+    },
+    "达人建联": {
+        "uuid": "bae84403-d8cf-4521-a175-836d7478e6a9",
+        "dept": "站外部",
+        "aliases": [
+            "达人邀约",
+            "TikTok达人建联"
+        ],
+        "desc": "给Tiktok的达人发送带货邀请，邀请的数量信息会同步在对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "params": [
+            {
+                "name": "产品名",
+                "label": "产品名称",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "ID",
+                "label": "服装的ID号码",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "direct": true
+    },
+    "Tiktok发货": {
+        "uuid": "726c787e-fc35-405d-a6d8-00e1a4cbfb8c",
+        "dept": "站外部",
+        "aliases": [
+            "TikTok发货",
+            "tiktok发货"
+        ],
+        "desc": "在Tiktok进行批量发货、处理发货失败、同步库存的任一操作，运行消息会同步在对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic",
+                "BotB@linenchic"
+            ]
+        },
+        "params": [
+            {
+                "name": "操作",
+                "label": "需要执行的操作",
+                "type": "text",
+                "enum": ["批量发货", "发货失败页面", "同步亚马逊库存"],
+                "required": true
+            }
+        ],
+        "direct": true
+    },
+    "领星ERP发货": {
+        "uuid": "242e2340-9a11-48b8-8585-ad574bdf886a",
+        "dept": "运营部",
+        "aliases": [
+            "领星发货",
+            "ERP发货"
+        ],
+        "desc": "在领星ERP进行创建货件、箱唛发送的操作，以及后续的发票制作、报关资料填写的步骤，运行的消息会同步发送在对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotD@linenchic",
+                "BotC@linenchic"
+            ]
+        },
+        "trigger_url": "https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=939691346262872064",
+        "direct": false,
+        "trigger_desc": "该任务需要通过影刀表单触发，表单链接：https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=939691346262872064"
+    },
+    "退货分析": {
+        "uuid": "333707bf-86a4-433a-99f2-0ddd27bb7620",
+        "dept": "开发部",
+        "aliases": [
+            "ASIN退货分析"
+        ],
+        "desc": "该流程下载指定ASIN的退货数据，并制作透视表、AI数据分析，将结果发送到对应的群聊中",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "params": [
+            {
+                "name": "ASIN",
+                "label": "指定需要执行流程的ASIN",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "开始日期",
+                "label": "指定日期范围，格式YYYY-MM-DD",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "结束日期",
+                "label": "指定日期范围，格式YYYY-MM-DD",
+                "type": "text",
+                "required": true
+            }
+        ],
+        "direct": true
+    },
+    "订单发货异常排查": {
+        "uuid": "ec6a65d8-09e6-44b6-8f72-d8a20893c044",
+        "dept": "站外部",
+        "aliases": [
+            "发货异常排查",
+            "订单异常排查"
+        ],
+        "desc": "对TioTok后台订单管理界面的运输中、已发货板块进行排查，是否存在异常订单，根据情况发起索赔，并记录索赔数据，运行中的消息会同步在对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "params": [],
+        "direct": true
+    },
+    "索赔跟踪": {
+        "uuid": "322c4211-7374-482f-9255-6588a2154973",
+        "dept": "站外部",
+        "aliases": [
+            "索赔查询"
+        ],
+        "desc": "该流程跟踪查看指定订单ID的索赔结果，并将结果同步到表格中",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic",
+                "BotB@linenchic"
+            ]
+        },
+        "trigger_url": "https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=942716562162831360",
+        "direct": false,
+        "trigger_desc": "该任务需要通过影刀表单触发，表单链接：https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=942716562162831360"
+    },
+    "头程分摊": {
+        "uuid": "ffdf905c-cddf-48a3-811d-98194c933b38",
+        "dept": "运营部",
+        "aliases": [
+            "FBA头程分摊"
+        ],
+        "desc": "该流程会将表格中的所有FBA号在领星ERP进行数据填写、发货，运行消息会同步到对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "trigger_url": "https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=944845015821570048",
+        "direct": false,
+        "trigger_desc": "该任务需要通过影刀表单触发，表单链接：https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=944845015821570048"
+    },
+    "创建一对一发货单": {
+        "uuid": "2ace38da-2ff1-4af6-8a67-91b0ee79b214",
+        "dept": "运营部",
+        "aliases": [
+            "一对一发货单"
+        ],
+        "desc": "该流程会将表格中的所有FBA号在领星ERP创建一对一发货单",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "trigger_url": "https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=945918793112940544",
+        "direct": false,
+        "trigger_desc": "该任务需要通过影刀表单触发，表单链接：https://console.yingdao.com/dispatch/app/senior-plan/share/formex?flowId=945918793112940544"
+    },
+    "下载报表+做应收表": {
+        "uuid": "cd3e1140-587a-4294-8de6-b8d3f0c1230a",
+        "dept": "运营部、财务部",
+        "aliases": [
+            "做应收表",
+            "下载应收报表",
+            "应收表"
+        ],
+        "desc": "该流程会循环每一个店铺，下载交易明细excel、发票PDF、截图应收数据、制作应收excel表，并将结果发送在对应群聊",
+        "robot_config": {
+            "target_robots": [
+                "BotA@linenchic"
+            ]
+        },
+        "params": [],
+        "direct": true
+    }
+}
