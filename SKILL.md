@@ -11,6 +11,7 @@ description: "影刀 RPA 调度技能。通过 TASKS.md 回答自动化能力清
 - 自动化能力问答优先读取 `TASKS.md`，不要为了回答「可以做什么」调用脚本。
 - 启动、查询、停止、查看历史、查看机器人状态时，所有命令在技能根目录下执行。
 - 脚本参数为**单行 JSON**，必须包含 `"action"` 字段。
+- **临时文件清理**：Windows 文件传参产生的 `tmp_rpa.json`、`tmp_arg.json` 等临时文件，**每次操作完成后必须立即删除**（`Remove-Item tmp_*.json`），不留残留。
 
 ### 跨平台调用方式
 
@@ -30,6 +31,7 @@ description: "影刀 RPA 调度技能。通过 TASKS.md 回答自动化能力清
    $utf8nobom = New-Object System.Text.UTF8Encoding $false
    [System.IO.File]::WriteAllText("tmp_rpa.json", $json, $utf8nobom)
    python scripts/rpa.py --file tmp_rpa.json
+   Remove-Item tmp_rpa.json
    ```
 
 2. 或使用 --stdin：
@@ -177,6 +179,7 @@ $json = '{"action":"start","task_name":"{{task_name}}","biz_params":{{biz_params
 $utf8nobom = New-Object System.Text.UTF8Encoding $false
 [System.IO.File]::WriteAllText("tmp_rpa.json", $json, $utf8nobom)
 python scripts/rpa.py --file tmp_rpa.json
+Remove-Item tmp_rpa.json
 ```
 
 成功时转述状态并**明确告知启动时间与运行机器人**，不要念出内部 ID。
