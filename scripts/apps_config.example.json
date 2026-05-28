@@ -1,0 +1,66 @@
+{
+    "发票报销": {
+        "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "dept": "财务部",
+        "aliases": [
+            "报销发票"
+        ],
+        "desc": "根据发票信息自动完成报销流程",
+        "robot_config": {
+            "target_robots": [
+                "BotD@example.com",
+                "BotC@example.com"
+            ]
+        },
+        "params": [
+            {
+                "name": "invoice_no",
+                "label": "发票号码",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "remark",
+                "label": "备注",
+                "type": "text",
+                "required": false
+            }
+        ],
+        "direct": true
+    },
+    "订单同步": {
+        "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "dept": "运营部",
+        "aliases": [
+            "同步订单"
+        ],
+        "desc": "按店铺名称同步平台订单",
+        "robot_config": {
+            "target_robots": [
+                "BotA@example.com"
+            ]
+        },
+        "params": [
+            {
+                "name": "shop_name",
+                "label": "店铺名称",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "sync_action",
+                "label": "同步操作",
+                "type": "text",
+                "enum": ["批量发货", "处理发货失败", "同步库存"],
+                "required": true
+            },
+            {
+                "name": "report_file",
+                "label": "报表文件",
+                "type": "file_url",
+                "required": true
+            }
+        ],
+        "direct": true
+    }
+}
